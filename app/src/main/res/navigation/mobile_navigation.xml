@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_menu">
+
+    <fragment
+        android:id="@+id/navigation_menu"
+        android:name="com.cpen321.modernwaiter.ui.menu.MenuFragment"
+        android:label="@string/title_menu"
+        tools:layout="@layout/fragment_menu" >
+        <action
+            android:id="@+id/action_navigation_menu_to_navigation_order"
+            app:destination="@id/navigation_order" />
+
+        <action
+            android:id="@+id/action_navigation_refresh_menu"
+            app:destination="@id/navigation_menu" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_order"
+        android:name="com.cpen321.modernwaiter.ui.order.OrderFragment"
+        android:label="Order"
+        tools:layout="@layout/fragment_order" >
+        <action
+            android:id="@+id/action_navigation_order_to_navigation_bill"
+            app:destination="@id/navigation_bill" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_bill"
+        android:name="com.cpen321.modernwaiter.ui.bill.BillFragment"
+        android:label="Bill"
+        tools:layout="@layout/fragment_bill" >
+        <action
+            android:id="@+id/action_navigation_bill_to_navigation_payment"
+            app:destination="@id/navigation_payment" />
+
+        <action
+            android:id="@+id/action_navigation_refresh_bill"
+            app:destination="@id/navigation_bill" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_payment"
+        android:name="com.cpen321.modernwaiter.ui.payment.MainPaymentFragment"
+        android:label="Payment"
+        tools:layout="@layout/fragment_payment" >
+        <action
+            android:id="@+id/action_navigation_payment_to_navigation_stripe"
+            app:destination="@id/navigation_stripe" />
+        <action
+            android:id="@+id/action_navigation_payment_to_per_item_payment"
+            app:destination="@id/navigation_per_item_payment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_per_item_payment"
+        android:name="com.cpen321.modernwaiter.ui.payment.peritem.PerItemPaymentFragment"
+        android:label="Stripe"
+        tools:layout="@layout/fragment_per_item_payment" >
+        <action
+            android:id="@+id/action_navigation_per_item_payment_to_stripe"
+            app:destination="@id/navigation_stripe" />
+
+        <action
+            android:id="@+id/action_navigation_refresh_per_item_payment"
+            app:destination="@id/navigation_per_item_payment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_stripe"
+        android:name="com.cpen321.modernwaiter.ui.payment.StripePaymentFragment"
+        android:label="Stripe"
+        tools:layout="@layout/fragment_stripe" >
+        <action
+            android:id="@+id/action_navigation_stripe_to_navigation_post_payment"
+            app:destination="@id/navigation_post_payment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_post_payment"
+        android:name="com.cpen321.modernwaiter.ui.payment.PostPaymentFragment"
+        android:label="Stripe"
+        tools:layout="@layout/fragment_post_payment" >
+        <action
+            android:id="@+id/action_navigation_post_payment_to_navigation_payment"
+            app:destination="@id/navigation_payment" />
+        <action
+            android:id="@+id/action_navigation_post_payment_to_navigation_menu"
+            app:destination="@id/navigation_menu" />
+    </fragment>
+</navigation>
